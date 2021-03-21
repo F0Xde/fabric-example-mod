@@ -1,32 +1,23 @@
-# gradle
-
+# Gradle
 .gradle/
 build/
 out/
 classes/
 
-# eclipse
+# Fabric
+run/
 
-*.launch
-
-# idea
-
+# Editors
 .idea/
 *.iml
 *.ipr
 *.iws
-
-# vscode
-
+*.launch
+.classpath
+.project
 .settings/
 .vscode/
 bin/
-.classpath
-.project
 
-# fabric
-
-run/
-
-# garbage
+# Other
 .DS_Store
