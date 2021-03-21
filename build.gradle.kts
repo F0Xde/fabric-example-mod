@@ -4,7 +4,7 @@ import java.util.function.Function
 plugins {
     kotlin("jvm") version "1.4.31"
     `maven-publish`
-    id("fabric-loom") version "0.4-SNAPSHOT"
+    id("fabric-loom") version "0.6-SNAPSHOT"
 }
 
 version = "0.1.0"
