@@ -1,4 +1,4 @@
-rootProject.name = "legacy-fabric-kotlin-example-mod"
+rootProject.name = "fabric-example-mod"
 
 pluginManagement {
     repositories {

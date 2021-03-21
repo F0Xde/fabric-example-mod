@@ -30,7 +30,7 @@ dependencies {
     modImplementation(loaderDep) {
         exclude(module = "guava")
     }
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.10.0")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.10.3")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.5.0+kotlin.1.4.31")
 
     if (isMac) {
@@ -44,6 +44,13 @@ configurations.all {
     resolutionStrategy {
         dependencySubstitution {
             substitute(module("net.fabricmc:fabric-loader")).with(module(loaderDep))
+            if (isMac) {
+                substitute(module("org.lwjgl.lwjgl:lwjgl_util:2.9.2-nightly-201408222")).with(module("org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209"))
+                substitute(module("org.lwjgl.lwjgl:lwjgl:2.9.2-nightly-201408222")).with(module("org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209"))
+            }
+        }
+        if (isMac) {
+            force("org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209")
         }
     }
 }
@@ -85,18 +92,6 @@ publishing {
         create<MavenPublication>("mavenJava") {
             artifact(tasks.remapJar)
             artifact(tasks.remapSourcesJar)
-        }
-    }
-}
-
-if (isMac) {
-    configurations.all {
-        resolutionStrategy {
-            dependencySubstitution {
-                substitute(module("org.lwjgl.lwjgl:lwjgl_util:2.9.2-nightly-201408222")).with(module("org.lwjgl.lwjgl:lwjgl_util:2.9.4-nightly-20150209"))
-                substitute(module("org.lwjgl.lwjgl:lwjgl:2.9.2-nightly-201408222")).with(module("org.lwjgl.lwjgl:lwjgl:2.9.4-nightly-20150209"))
-            }
-            force("org.lwjgl.lwjgl:lwjgl-platform:2.9.4-nightly-20150209")
         }
     }
 }
